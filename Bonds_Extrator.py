@@ -31,8 +31,9 @@ def get_filename_from_cd(cd):
     return fname[0]
 
 
-urls=[]
 year=str(time.localtime().tm_year)
+
+urls=[]
 titulos=["LTN","NTN-B","NTN-B_Principal","NTN-C","NTN-F"]
 for titulo in titulos:
     url="https://cdn.tesouro.gov.br/sistemas-internos/apex/producao/sistemas/sistd/"+year+"/"+titulo+"_"+year+".xls"
@@ -41,7 +42,7 @@ index=0
 for url in urls:
     try:
     	r = requests.get(url, allow_redirects=True)
-    	filename = titulos[index]+"_"+year+".xlsx"
+    	filename = titulos[index]+"_"+year+".xls"
     	open(os.path.join(path, filename), 'wb').write(r.content)
     	time.sleep(0.2)
     	print("file "+filename+" has been downloaded.")
