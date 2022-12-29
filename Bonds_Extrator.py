@@ -83,7 +83,8 @@ for file in os.listdir(abspath(path)):
             data.dropna(how="any")
             df3=pd.concat([df3,data])
 
-df3.to_pickle("Histórico de preços e taxas.pickle")
+df3['Dia']=pd.to_datetime(df['Dia'],errors='coerce')
+#df3.to_pickle("Histórico de preços e taxas.pickle")
 df3.to_excel("Histórico de preços e taxas.xlsx")
 # df3.to_parquet("Histórico de preços e taxas.parquet")
-df3.to_msgpack("Histórico de preços e taxas.msgpack")
+#df3.to_msgpack("Histórico de preços e taxas.msgpack")
